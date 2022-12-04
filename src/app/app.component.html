@@ -1,0 +1,34 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button>
+      <mat-icon (click)="sidenav.toggle();">menu</mat-icon>
+    </button>
+    <h1>teste</h1>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav opened="true" mode="side">
+    <mat-nav-list>
+      <mat-accordion>
+        <mat-expansion-panel *ngFor="let panel of config.panels">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{ panel.name }}
+            </mat-panel-title>
+            <mat-panel-description>
+              {{ panel.description }}
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <p>Panel content goes here</p>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-nav-list>
+  </mat-sidenav>
+    <mat-sidenav-content>
+      <div style="height: 88vh;">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+
